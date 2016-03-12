@@ -120,3 +120,30 @@ https://youtu.be/2QgZVYI3tDs?t=15m31s
 ----
 
 https://youtu.be/2QgZVYI3tDs?t=28m28s
+
+```
+(define (coord-map rect)
+  (lambda (point)
+    (+vect 
+      (+vect (scale (xcor point)
+                    (horiz rect))
+             (scale (ycor point)
+                    (vert rect)))
+      (origin rect))))
+```
+
+```
+(define (make picture seglist)
+  (lambda (rect)
+    (foreach
+      (lambda (s)
+        (drawline
+          ((coord-map rect) (seg-start s))
+          ((coord-map rect) (seg-end s))))
+      seglist)))
+```
+
+----
+
+https://youtu.be/2QgZVYI3tDs?t=48m52s
+
