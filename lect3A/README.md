@@ -67,7 +67,7 @@ https://www.youtube.com/watch?v=2QgZVYI3tDs
 
 ## 2016/3/12
 
-https://youtu.be/2QgZVYI3tDs?t=14m59s
+https://youtu.be/2QgZVYI3tDs?t=15m31s
 
 ```
 (define 1-to-4 (list 1 2 3 4))
