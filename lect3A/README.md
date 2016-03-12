@@ -1,8 +1,8 @@
 # Lecture 3A
 
-https://www.youtube.com/watch?v=2QgZVYI3tDs
-
 ## 2016/3/11
+
+https://www.youtube.com/watch?v=2QgZVYI3tDs
 
 (this is everything I typed into my interpreter while watching the lecture)
 
@@ -67,3 +67,56 @@ https://www.youtube.com/watch?v=2QgZVYI3tDs
 
 ## 2016/3/12
 
+https://youtu.be/2QgZVYI3tDs?t=14m59s
+
+```
+(define 1-to-4 (list 1 2 3 4))
+(define nil '())
+```
+
+```
+(define (scale s l)
+  (if (null? l)
+    nil
+    (cons (* s (car l))
+          (scale s (cdr l)))))
+```
+
+```
+(scale 10 1-to-4)
+```
+
+```
+(define (map f l)
+  (if (null? l)
+    nil
+    (cons (f (car l))
+          (map f (cdr l)))))
+```
+
+```
+(define (scale s l)
+  (map (lambda (x) (* s x))
+       l))
+```
+
+```
+(define (square x) (* x x))
+(map square 1-to-4)
+```
+
+```
+(map (lambda (x) (+ x 10)) 1-to-4)
+```
+
+```
+(define (foreach f l)
+  (if (null? l)
+      nil
+      (cons (f (car l))
+            (foreach f (cdr l)))))
+```
+
+----
+
+https://youtu.be/2QgZVYI3tDs?t=28m28s
