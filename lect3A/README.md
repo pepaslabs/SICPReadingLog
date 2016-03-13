@@ -4,8 +4,6 @@
 
 https://www.youtube.com/watch?v=2QgZVYI3tDs
 
-(this is everything I typed into my interpreter while watching the lecture)
-
 ```
 (define (+vect v1 v2)
   (make-vector
@@ -147,3 +145,52 @@ https://youtu.be/2QgZVYI3tDs?t=28m28s
 
 https://youtu.be/2QgZVYI3tDs?t=48m52s
 
+```
+(define (beside p1 p2 a)
+  (lambda (rect)
+    (p1 (make-rect
+          (origin rect)
+          (scale a (horiz rect))
+          (vert rect)))
+    (p2 (make-rect
+          (+vect (origin rect)
+                 (scale a (horiz rect)))
+          (scale (- 1 a) (horiz rect))
+          (vert rect)))))
+```
+
+```
+(define (rotate90 pict)
+  (lambda (rect)
+    (pict (make-rect
+            (+vect (origin rect)
+                   (horiz rect))
+            (vert rect)
+            (scale -1 (horiz rect))))))
+```
+
+note: p1 is a procedure which draws itself when given a rect.
+ 
+```
+(define (right-push p n a)
+  (if (= n 0)
+    p
+    (beside p
+            (right-push p
+                        (- n 1)
+                        a)
+            a)))
+```
+
+```
+(define (push comb)
+  (lambda (pict n a)
+    ((repeated
+      (lambda (p) (comb pict p a))
+      n)
+    pict)))
+```
+
+```
+(define right-push (push beside))
+```
